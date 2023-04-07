@@ -1,0 +1,12 @@
+{
+  "name": "desafio-crud",
+  "version": "1.0.0",
+  "description": "Um pequeno desafio envolvendo a construção de um CRUD.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
