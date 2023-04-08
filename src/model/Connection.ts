@@ -1,14 +1,28 @@
 import { connect } from "mongoose";
 
-class ConnectApp {  
+class ConnectApp {
+  private user: string;
+  private pass: string;
+  private dbName: string;
+  private host: string;
+  private port: string;
+
+  constructor() {
+    this.user = process.env.MONGOUSER || "mongo",
+    this.pass = process.env.MONGOPASSWORD || "password",
+    this.dbName = process.env.MONGODATABASE || "mydatabase"
+    this.host = process.env.MONGOHOST || "db"
+    this.port = process.env.MONGOPORT || "27017"
+  }
+
   public start() {
     const options = {
-      user: process.env.MONGOUSER || "mongo",
-      pass: process.env.MONGOPASSWORD || "password",
-      dbName: process.env.MONGODATABASE || "mydatabase",
+      user: this.user,
+      pass: this.pass,
+      dbName: this.dbName
     };    
 
-    connect(`mongodb://${process.env.MONGOHOST || "db"}:${process.env.MONGOPORT || "27017"}`, options)
+    connect(`mongodb://${this.host}:${this.port}`, options)
   }
 }
 

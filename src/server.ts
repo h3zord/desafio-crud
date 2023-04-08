@@ -1,7 +1,16 @@
 import App from "./app";
 import 'dotenv/config';
 
-const app = new App()
-const PORT = process.env.PORT || "3000";
+class Server {
+  private app: App
+  private port: string
 
-app.start(PORT)
+  constructor() {
+    this.app = new App()
+    this.port = process.env.PORT || "3000"
+
+    this.app.start(this.port)
+  }
+}
+
+new Server()
