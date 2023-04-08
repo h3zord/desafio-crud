@@ -17,10 +17,11 @@ services:
       - db
     environment:
       PORT: 3000
-      MONGOUSER: MONGO
+      MONGOUSER: mongo
       MONGOPASSWORD: password
       MONGOPORT: 27017
       MONGOHOST: db
+      MONGODATABASE: mydatabase
 
   db:
     image: mongo
