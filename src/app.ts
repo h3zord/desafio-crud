@@ -1,19 +1,27 @@
-import express, { Request, Response, Express, response } from "express";
+import express, { Request, Response, Express } from "express";
+import "express-async-errors";
 import ConnectApp from "./model/Connection";
 import EmployeeODM from "./model/EmployeeODM";
-
-
-const app = express()
+import EmployeeController from "./controller/EmployeeController";
+import EmployeeService from "./service/EmployeeService";
+import EmployeeRoutes from "./routes/EmployeeRoutes";
+import ErrorHandler from "./middleware/ErrorHander";
 
 class App {
   private app: Express;
   private connectApp: ConnectApp;
+  private employeeRoutes: EmployeeRoutes;
+  private employeeController: EmployeeController;
+  private employeeService: EmployeeService;
   private employeeODM: EmployeeODM;
 
   constructor() {
     this.app = express()
-    this.connectApp = new ConnectApp()
-    this.employeeODM = new EmployeeODM()
+    this.connectApp = new ConnectApp();
+    this.employeeODM = new EmployeeODM();
+    this.employeeService = new EmployeeService(this.employeeODM);
+    this.employeeController = new EmployeeController(this.employeeService);
+    this.employeeRoutes = new EmployeeRoutes(this.employeeController);
 
     this.config()
   }
@@ -22,6 +30,9 @@ class App {
     this.app.use(express.json())
 
     this.app.get("/", (_req: Request, res: Response) => res.status(200).json({ message: "ok" }))
+
+    this.app.use(this.employeeRoutes.router);
+    this.app.use(ErrorHandler.catchError)
   }
 
   public start(PORT: string ) {

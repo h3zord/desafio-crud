@@ -5,12 +5,12 @@ class Server {
   private app: App
   private port: string
 
-  constructor() {
-    this.app = new App()
+  constructor(app: App) {
+    this.app = app
     this.port = process.env.PORT || "3000"
 
     this.app.start(this.port)
   }
 }
 
-new Server()
+new Server(new App())
