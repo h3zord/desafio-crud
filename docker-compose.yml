@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  node:
+    image: node:alpine
+    container_name: desafio_crud
+    tty: true
+    stdin_open: true
+    # command: sh -c "npm install; npm start"
+    restart: always
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    environment:
+      PORT: 3000
+      MONGOUSER: MONGO
+      MONGOPASSWORD: password
+      MONGOPORT: 27017
+      MONGOHOST: db
+
+  db:
+    image: mongo
+    container_name: mongo_db
+    volumes:
+      - ./:/app
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+networks:
+  default:
+    name: desafio_crud_net

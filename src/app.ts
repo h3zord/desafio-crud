@@ -17,7 +17,7 @@ class App {
     this.app.get("/", (_req: Request, res: Response) => res.status(200).json({ message: "ok" }))
   }
 
-  public start(PORT: string | number ):void {
+  public start(PORT: string ):void {
     this.app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   }
 
