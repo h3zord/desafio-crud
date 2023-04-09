@@ -19,7 +19,7 @@ class EmployeeODM {
     this.model = models.Employee || model('Employee', this.employeeSchema);
   }
 
-  public async create(employeeData: IEmployee): Promise<IEmployee> {
+  public async create(employeeData: IEmployee): Promise<IEmployee> {    
     const result = await this.model.create({ ...employeeData });
 
     if (!result) throw new HttpException(400, "Failed to create employee");
@@ -34,7 +34,7 @@ class EmployeeODM {
   public async findById(id: string): Promise<IEmployee> {
     if (!isValidObjectId(id)) throw new HttpException(400, this.ERROR_MSG);
 
-    const result = await this.model.findById(id);
+    const result = await this.model.findById(id);    
 
     if (!result) throw new HttpException(404, "Employee not found");
 
@@ -42,14 +42,14 @@ class EmployeeODM {
   }
 
   public async updateById(id: string, employeeData: Partial<IEmployee>): Promise<IEmployee> {
-    if (!isValidObjectId(id)) throw new HttpException(400, this.ERROR_MSG);
+    if (!isValidObjectId(id)) throw new HttpException(400, this.ERROR_MSG);    
 
     const result = await this.model.findByIdAndUpdate(
-      { id },
+      { _id: id },
       { ...employeeData },
       { new: true },
     );
-
+      
     if (!result) throw new HttpException(422, "Failed to update employee");
 
     return result;

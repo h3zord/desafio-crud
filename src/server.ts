@@ -1,4 +1,5 @@
 import App from "./app";
+import ConnectApp from "./model/Connection";
 import 'dotenv/config';
 
 class Server {
@@ -13,4 +14,5 @@ class Server {
   }
 }
 
-new Server(new App())
+const app = new App(new ConnectApp())
+new Server(app)

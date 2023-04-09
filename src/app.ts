@@ -15,9 +15,9 @@ class App {
   private employeeService: EmployeeService;
   private employeeODM: EmployeeODM;
 
-  constructor() {
+  constructor(connection: ConnectApp) {
     this.app = express()
-    this.connectApp = new ConnectApp();
+    this.connectApp = connection;
     this.employeeODM = new EmployeeODM();
     this.employeeService = new EmployeeService(this.employeeODM);
     this.employeeController = new EmployeeController(this.employeeService);
@@ -32,6 +32,7 @@ class App {
     this.app.get("/", (_req: Request, res: Response) => res.status(200).json({ message: "ok" }))
 
     this.app.use(this.employeeRoutes.router);
+    
     this.app.use(ErrorHandler.catchError)
   }
 

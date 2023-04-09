@@ -1,6 +1,6 @@
 import IEmployee from "../Interfaces/IEmployee";
-import IEmployeeMethods from "../Interfaces/IEmployeeODM";
-import HttpException from "../utils/HttpException";
+import IEmployeeMethods from "../Interfaces/IEmployeeMethods";
+import Validation from "../validation/Validation";
 
 
 class EmployeeService {
@@ -10,10 +10,8 @@ class EmployeeService {
     this.employeeODM = EmployeeODM
   }
 
-  public async create(employeeData: IEmployee): Promise<IEmployee> {
-    const { nome, idade, cargo } = employeeData;
-
-    if (!nome || !idade || !cargo) throw new HttpException(422, "Fill in the fields correctly");
+  public async create(employeeData: IEmployee): Promise<IEmployee> {    
+    Validation.createEmployee(employeeData);
 
     return await this.employeeODM.create(employeeData);
   }
@@ -27,6 +25,8 @@ class EmployeeService {
   }
 
   public async updateById(id: string, employeeData: Partial<IEmployee>): Promise<IEmployee> {
+    Validation.updateEmployee(employeeData);
+    
     return await this.employeeODM.updateById(id, employeeData);
   }
 
