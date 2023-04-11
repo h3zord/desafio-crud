@@ -31,7 +31,7 @@ class EmployeeODM {
     return await this.model.find();
   }
 
-  public async findById(id: string): Promise<IEmployee> {
+  public async findById(id: string): Promise<IEmployee> {   
     if (!isValidObjectId(id)) throw new HttpException(400, this.ERROR_MSG);
 
     const result = await this.model.findById(id);    
