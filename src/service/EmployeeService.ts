@@ -4,10 +4,10 @@ import Validation from "../validation/Validation";
 
 
 class EmployeeService {
-  private employeeODM: IEmployeeMethods
+  private employeeODM: IEmployeeMethods;
 
   constructor(EmployeeODM: IEmployeeMethods) {
-    this.employeeODM = EmployeeODM
+    this.employeeODM = EmployeeODM;
   }
 
   public async create(employeeData: IEmployee): Promise<IEmployee> {    

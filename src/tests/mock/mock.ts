@@ -8,6 +8,7 @@ export const validMock = [
 
 export const invalidMock = [
   {
+    nome: 0,
     idade: 30,
     cargo: "test"
   }

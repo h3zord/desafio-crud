@@ -10,30 +10,31 @@ describe('Testing model layer', () => {
   afterEach(() => {
     sinon.restore();
   });
+  
   describe('Testing create method', () => {
-    it('Testing if it creates an employee correctly', async () => {
-      sinon.stub(employeeODM['model'], "create" as any).resolves(validMock[0]);
-  
-      const result = await employeeODM.create(validMock[0]);
-  
-      expect(result).to.be.deep.eq(validMock[0]);
-    })
-  
     it ('Testing if it returns an error when create is invalid', async () => {
       sinon.stub(employeeODM['model'], "create").resolves(undefined);
   
       try {
-        await employeeODM.create(validMock[0])
+        await employeeODM.create(validMock[0] as IEmployee)
       } catch (error: any) {
         expect(error.message).to.be.eq("Failed to create employee");
         expect(error.status).to.be.eq(400);
       }
     })
+
+    it('Testing if it creates an employee correctly', async () => {
+      sinon.stub(employeeODM['model'], "create" as any).resolves(validMock[0] as IEmployee);
+  
+      const result = await employeeODM.create(validMock[0] as IEmployee);
+  
+      expect(result).to.be.deep.eq(validMock[0]);
+    })
   })
 
   describe('Testing get all method', () => {
     it('Testing if it correctly returns all employees', async () => {
-      sinon.stub(employeeODM['model'], "find").resolves(validMock);
+      sinon.stub(employeeODM['model'], "find").resolves(validMock as IEmployee[]);
   
       const result = await employeeODM.getAll(); 
   
@@ -63,7 +64,7 @@ describe('Testing model layer', () => {
     })
   
     it('Testing if it returns an employee finding by id correctly', async () => {
-      sinon.stub(employeeODM["model"], "findById").resolves(validMock);
+      sinon.stub(employeeODM["model"], "findById").resolves(validMock as IEmployee[]);
   
       const result = await employeeODM.findById("64349418dcda922959854a8a");
   
@@ -73,6 +74,7 @@ describe('Testing model layer', () => {
 
   describe('Testing update by id method', () => {
     it('Testing if it returns an error when id is invalid', async () => {
+
       try {
         await employeeODM.updateById("0", validMock as Partial<IEmployee>)
       } catch (error: any) {
@@ -93,7 +95,7 @@ describe('Testing model layer', () => {
     })
 
     it('Testing if it updates an employee correctly', async () => {
-      sinon.stub(employeeODM["model"], "findByIdAndUpdate").resolves(validMock);
+      sinon.stub(employeeODM["model"], "findByIdAndUpdate").resolves(validMock as IEmployee[]);
 
       const result = await employeeODM.updateById("64349418dcda922959854a8a", validMock as Partial<IEmployee>)
 
@@ -103,6 +105,7 @@ describe('Testing model layer', () => {
 
   describe('Testing delete by id method', () => {
     it('Testing if it returns an error when id is invalid', async () => {
+
       try {
         await employeeODM.deleteById("0")
       } catch (error: any) {
@@ -123,14 +126,11 @@ describe('Testing model layer', () => {
     })
 
     it('Testing if it deletes an employee correctly', async () => {
-      sinon.stub(employeeODM["model"], "findByIdAndDelete").resolves(validMock);
+      sinon.stub(employeeODM["model"], "findByIdAndDelete").resolves(validMock as IEmployee[]);
 
       const result = await employeeODM.deleteById("64349418dcda922959854a8a")
 
       expect(result).to.be.deep.eq(validMock);
     })
   })
-
-
-
 })

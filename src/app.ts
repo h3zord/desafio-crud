@@ -8,7 +8,7 @@ import EmployeeRoutes from "./routes/EmployeeRoutes";
 import ErrorHandler from "./middleware/ErrorHander";
 
 class App {
-  private app: Express;
+  public app: Express;
   private connectApp: ConnectApp;
   private employeeRoutes: EmployeeRoutes;
   private employeeController: EmployeeController;

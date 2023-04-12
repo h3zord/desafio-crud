@@ -1,1 +1,0 @@
-{"parent":null,"pid":1731,"argv":["/usr/local/bin/node","/usr/local/bin/npm","run","test"],"execArgv":[],"cwd":"/app","time":1681182532500,"ppid":1720,"coverageFilename":"/app/.nyc_output/17f7f4df-89c1-4d36-b809-9d31d2ab0c17.json","externalId":"","uuid":"17f7f4df-89c1-4d36-b809-9d31d2ab0c17","files":[]}

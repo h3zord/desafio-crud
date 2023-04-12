@@ -2,7 +2,7 @@ import App from "./app";
 import ConnectApp from "./model/Connection";
 import 'dotenv/config';
 
-class Server {
+export default class Server {
   private app: App
   private port: string
 

@@ -6,5 +6,9 @@ module.exports = {
   ],
   exclude: [
     'src/tests/**',
+    'src/Interfaces',
+    'src/app.ts',
+    'src/server.ts',
+    'src/model/Connection.ts',
   ],
 };
