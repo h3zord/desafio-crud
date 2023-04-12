@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
 export default interface IEmployeeController {
   create(req: Request, res: Response): Promise<Response>,

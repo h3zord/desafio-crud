@@ -8,11 +8,11 @@ class Validation {
       nome: Joi.string().required(),
       idade: Joi.number().required(),
       cargo: Joi.string().required(),
-    })
+    });
 
     const { error } = schema.validate(employeeData);    
 
-    if (error) throw new HttpException(422, "Fill in the fields correctly");
+    if (error) throw new HttpException(422, 'Fill in the fields correctly');
   }
 
   static updateEmployee(employeeData: Partial<IEmployee>) {
@@ -20,11 +20,11 @@ class Validation {
       nome: Joi.string(),
       idade: Joi.number(),
       cargo: Joi.string(),
-    })
+    });
 
     const { error } = schema.validate(employeeData);
 
-    if (error) throw new HttpException(422, "Fill in the fields correctly");
+    if (error) throw new HttpException(422, 'Fill in the fields correctly');
   }
 }
 

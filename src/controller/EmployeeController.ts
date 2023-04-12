@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import IEmployeeMethods from "../Interfaces/IEmployeeMethods";
+import { Request, Response } from 'express';
+import IEmployeeMethods from '../Interfaces/IEmployeeMethods';
 
 class EmployeeController {
   employeeService: IEmployeeMethods;
@@ -21,7 +21,7 @@ class EmployeeController {
   }
 
   public async findById(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params
+    const { id } = req.params;
 
     const result = await this.employeeService.findById(id);
 

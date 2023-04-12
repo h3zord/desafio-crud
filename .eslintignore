@@ -2,3 +2,4 @@ src/tests/
 node_modules
 dist/
 .nyc_output
+src/Interfaces

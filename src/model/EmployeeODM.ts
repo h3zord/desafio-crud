@@ -4,8 +4,10 @@ import HttpException from '../utils/HttpException';
 
 class EmployeeODM {
   private employeeSchema: Schema;
+
   private model: Model<IEmployee>;
-  private ERROR_MSG: string = "Invalid ID"
+
+  private ERROR_MSG: string = 'Invalid ID'
 
   constructor() {
     this.employeeSchema = new Schema<IEmployee>({
@@ -22,13 +24,13 @@ class EmployeeODM {
   public async create(employeeData: IEmployee): Promise<IEmployee> {    
     const result = await this.model.create({ ...employeeData });
 
-    if (!result) throw new HttpException(400, "Failed to create employee");
+    if (!result) throw new HttpException(400, 'Failed to create employee');
 
     return result;
   }
 
   public async getAll(): Promise<IEmployee[]> {
-    return await this.model.find();
+    return this.model.find();
   }
 
   public async findById(id: string): Promise<IEmployee> {   
@@ -36,7 +38,7 @@ class EmployeeODM {
 
     const result = await this.model.findById(id);    
 
-    if (!result) throw new HttpException(404, "Employee not found");
+    if (!result) throw new HttpException(404, 'Employee not found');
 
     return result;
   }
@@ -50,7 +52,7 @@ class EmployeeODM {
       { new: true },
     );
       
-    if (!result) throw new HttpException(422, "Failed to update employee");
+    if (!result) throw new HttpException(422, 'Failed to update employee');
 
     return result;
   }
@@ -60,7 +62,7 @@ class EmployeeODM {
 
     const result = await this.model.findByIdAndDelete(id);
 
-    if (!result) throw new HttpException(422, "Failed to delete employee")
+    if (!result) throw new HttpException(422, 'Failed to delete employee');
 
     return result;
   }

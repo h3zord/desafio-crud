@@ -1,7 +1,6 @@
-import IEmployee from "../Interfaces/IEmployee";
-import IEmployeeMethods from "../Interfaces/IEmployeeMethods";
-import Validation from "../validation/Validation";
-
+import IEmployee from '../Interfaces/IEmployee';
+import IEmployeeMethods from '../Interfaces/IEmployeeMethods';
+import Validation from '../validation/Validation';
 
 class EmployeeService {
   private employeeODM: IEmployeeMethods;
@@ -13,25 +12,25 @@ class EmployeeService {
   public async create(employeeData: IEmployee): Promise<IEmployee> {    
     Validation.createEmployee(employeeData);
 
-    return await this.employeeODM.create(employeeData);
+    return this.employeeODM.create(employeeData);
   }
 
   public async getAll(): Promise<IEmployee[]> {
-    return await this.employeeODM.getAll();
+    return this.employeeODM.getAll();
   }
 
   public async findById(id: string): Promise<IEmployee> {
-    return await this.employeeODM.findById(id);
+    return this.employeeODM.findById(id);
   }
 
   public async updateById(id: string, employeeData: Partial<IEmployee>): Promise<IEmployee> {
     Validation.updateEmployee(employeeData);
     
-    return await this.employeeODM.updateById(id, employeeData);
+    return this.employeeODM.updateById(id, employeeData);
   }
 
   public async deleteById(id: string): Promise<IEmployee> {
-    return await this.employeeODM.deleteById(id);
+    return this.employeeODM.deleteById(id);
   }
 }
 
