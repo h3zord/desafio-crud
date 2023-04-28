@@ -1,0 +1,307 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Car Shop API",
+    "description": "Esta documentação é destinada ao desafio CRUD."
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Employees",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/employee": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Cadastrar um novo funcionário",
+        "description": "Endpoint para cadastrar um novo funcionário no banco de dados.",
+        "parameters": [
+          {
+            "name": "info",
+            "in": "body",
+            "description": "Informações necessárias para cadastrar um novo funcionário.",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            },
+            "description": "Requisição para cadastrar um novo funcionário efetuada com sucesso!"
+          },
+          "401": {
+            "schema": {
+              "$ref": "#/definitions/CreateError"
+            },
+            "description": "Error! A requisição para criar um novo funcionário falhou!"
+          },
+          "422": {
+            "schema": {
+              "$ref": "#/definitions/DataError"
+            },
+            "description": "Error! Preencha corretamente todos os campos!"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Listar todos os funcionários",
+        "description": "Endpoint para listar todos os funcionários cadastrados no banco de dados.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/EmployeeList"
+            },
+            "description": "Requisição para listar todos os funcionários efetuada com sucesso!"
+          }
+        }
+      }
+    },
+    "/employee/{id}": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Buscar um funcionário pelo seu ID",
+        "description": "Endpoint para buscar um funcionário cadastrado no banco de dados pelo seu ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            },
+            "description": "Requisição para buscar um funcionário pelo seu ID efetuada com sucesso!"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/InvalidIdError"
+            },
+            "description": "Error! O id fornecido para consulta é inválido!"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/EmployeeNotFound"
+            },
+            "description": "Error! O funcionário não foi encontrado no banco de dados!"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Atualizar um funcionário pelo seu ID",
+        "description": "Endpoint para atualizar um funcionário cadastrado no banco de dados pelo seu ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "info",
+            "in": "body",
+            "description": "Informações necessárias para atualizar um funcionário pelo seu ID.",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            },
+            "description": "Requisição para atualizar um funcionário pelo seu ID efetuada com sucesso!"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/InvalidIdError"
+            },
+            "description": "Error! O id fornecido para consulta é inválido!"
+          },
+          "401": {
+            "schema": {
+              "$ref": "#/definitions/UpdateError"
+            },
+            "description": "Error! A requisição para atualizar um funcionário pelo seu ID falhou!"
+          },
+          "422": {
+            "schema": {
+              "$ref": "#/definitions/DataError"
+            },
+            "description": "Error! Preencha corretamente todos os campos!"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Deletar um funcionário pelo seu ID",
+        "description": "Endpoint para deletar um funcionário cadastrado no banco de dados pelo seu ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            },
+            "description": "Requisição para deletar um funcionário pelo seu ID efetuada com sucesso!"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/InvalidIdError"
+            },
+            "description": "Error! O id fornecido para consulta é inválido!"
+          },
+          "401": {
+            "schema": {
+              "$ref": "#/definitions/DeleteError"
+            },
+            "description": "Error! A requisição para deletar um funcionário pelo seu ID falhou!"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EmployeeList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "example": "Teste"
+          },
+          "idade": {
+            "type": "number",
+            "example": 30
+          },
+          "cargo": {
+            "type": "string",
+            "example": "Back-end developer"
+          }
+        },
+        "required": [
+          "nome",
+          "idade",
+          "cargo"
+        ]
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Teste"
+        },
+        "idade": {
+          "type": "number",
+          "example": 30
+        },
+        "cargo": {
+          "type": "string",
+          "example": "Back-end developer"
+        }
+      },
+      "required": [
+        "nome",
+        "idade",
+        "cargo"
+      ]
+    },
+    "CreateError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Failed to create employee"
+        }
+      }
+    },
+    "DataError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Fill in the fields correctly"
+        }
+      }
+    },
+    "InvalidIdError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Invalid ID"
+        }
+      }
+    },
+    "EmployeeNotFound": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Employee not found"
+        }
+      }
+    },
+    "UpdateError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Failed to update employee"
+        }
+      }
+    },
+    "DeleteError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Failed to delete employee"
+        }
+      }
+    }
+  }
+}
