@@ -1,32 +1,33 @@
-# Desafio-CRUD
-Um pequeno desafio envolvendo a construção de um CRUD.
+<h1 align="center">Boas-vindas ao repositório do desafio CRUD!</h1>
+<br />
 
-### Avisos:
-- Não é um projeto obrigatório.
-- Abra uma branch para postar a sua resposta.
-- Você está livre para escolher as tecnologias que serão usadas.
-- Os projetos Finalizados vão para um repositório da turma.
-- Data de entrega: 17/04/2023
+## Objetivo
 
-### Regras
-Um aplicativo da Web que lida com operações Criar/Recuperar/Atualizar ou Excluir é conhecido como aplicativo CRUD. 
+O <strong>desafio CRUD</strong> é uma API de gerenciamento de funcionários, que permite a criação, leitura, atualização e exclusão. Foi utilizada princípios da programação orientada a objetos para a construção dessa API.
 
-Crie um CRUD simples que pode criar/recuperar/atualizar/excluir informações de funcionários.
+## O que foi desenvolvido?
 
-Portanto, esta aplicação deve:
+O <strong>desafio CRUD</strong> é uma api que tem o objetivo de gerenciar o cadastro de funcionários no banco de dados. O docker foi utilizado para criar dois containers: um para o Node, com a função de rodar o Javascript do lado do servidor, e outro container para o banco de dados não relacional, que nesse caso é o mongoDB.
 
-- Criar uma nova informação do funcionário
-- Consultar a lista de Empregados.
-- Consultar as informações de um funcionário específico.
-- Atualizar as informações de um funcionário
-- Excluir informações de um funcionário
+O Typescript foi a linguagem escolhida para desenvolver essa aplicação, pelo motivo de possuir uma tipagem estática, garantindo mais confiabilidade no código. O express.js ficou com a responsabilidade de gerenciar as rotas, processar as requisições HTTP e definir os middlewares. A organização do projeto segue o modelo MSC (Model, Service e Controller), seguindo príncipios e da programação orientada a objetos.
 
-O banco de dados deve conter as informações:
+O ODM Mongoose foi incluído para modelar e manipular o banco de dados, e os endpoints dessa API rest permitem fazer as principais operações (CRUD): criar, ler, atualizar e excluir. A aplicação conta com testes unitários, onde as camadas model, service e controller são testadas isoladamente. E com testes de integração para verificar o funcionamento integrado entre diferentes partes da API. A taxa de cobertura foi de 100% das camadas. As bibliotecas utilizadas foram Mocha, Chai e Sinon.
 
-ID_empregado: Inteiro
+## Linguagens e ferramentas:
+- Docker
+- Node.js
+- Typescript
+- Express.js
+- MongoDB
+- Mongoose
+- Mocha
+- Chai
+- Sinon
 
-nome: Texto
+## Instalação e execução com Docker:
 
-Idade: Inteiro
+### 1 - Clone o repositório:
 
-Cargo: Texto
+```
+git clone git@github.com:h3zord/car-shop.git
+```
