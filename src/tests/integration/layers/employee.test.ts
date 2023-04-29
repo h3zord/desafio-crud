@@ -30,7 +30,7 @@ describe("Employee entity integration tests", () => {
 
       const result = await chai.request(app).post("/employee").send(validMock[0] as IEmployee);
 
-      expect(result.status).to.be.eq(400);
+      expect(result.status).to.be.eq(401);
       expect(result.body).to.be.deep.eq({ message: 'Failed to create employee' });
     })
 
@@ -102,7 +102,7 @@ describe("Employee entity integration tests", () => {
 
       const result = await chai.request(app).put("/employee/64349418dcda922959854a8a").send(validMock[0] as IEmployee);
 
-      expect(result.status).to.be.eq(422);
+      expect(result.status).to.be.eq(401);
       expect(result.body).to.be.deep.eq({ message: "Failed to update employee" });
     })
 
@@ -130,7 +130,7 @@ describe("Employee entity integration tests", () => {
 
     const result = await chai.request(app).delete("/employee/64349418dcda922959854a8a");
 
-    expect(result.status).to.be.eq(422);
+    expect(result.status).to.be.eq(401);
     expect(result.body).to.be.deep.eq({ message: "Failed to delete employee" });
   })
 

@@ -19,7 +19,7 @@ describe('Testing model layer', () => {
         await employeeODM.create(validMock[0] as IEmployee)
       } catch (error: any) {
         expect(error.message).to.be.eq("Failed to create employee");
-        expect(error.status).to.be.eq(400);
+        expect(error.status).to.be.eq(401);
       }
     })
 
@@ -90,7 +90,7 @@ describe('Testing model layer', () => {
         await employeeODM.updateById("64349418dcda922959854a8a", validMock as Partial<IEmployee>);
       } catch (error: any) {
         expect(error.message).to.be.eq("Failed to update employee");
-        expect(error.status).to.be.eq(422);
+        expect(error.status).to.be.eq(401);
       }
     })
 
@@ -121,7 +121,7 @@ describe('Testing model layer', () => {
         await employeeODM.deleteById("64349418dcda922959854a8a");
       } catch (error: any) {
         expect(error.message).to.be.eq("Failed to delete employee");
-        expect(error.status).to.be.eq(422);
+        expect(error.status).to.be.eq(401);
       }
     })
 

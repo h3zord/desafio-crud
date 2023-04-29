@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
   info: {
     version: '1.0.0',
-    title: 'Car Shop API',
+    title: 'Desafio CRUD API',
     description: 'Esta documentação é destinada ao desafio CRUD.',
   },
   host: 'localhost:3000',
