@@ -1,9 +1,9 @@
-<h1 align="center">Boas-vindas ao repositório do desafio CRUD!</h1>
+<h1 align="center">Boas-vindas ao repositório do Desafio CRUD!</h1>
 <br />
 
 ## Objetivo
 
-O <strong>desafio CRUD</strong> é uma API de gerenciamento de funcionários, que permite a criação, leitura, atualização e exclusão. Foi utilizada princípios da programação orientada a objetos para a construção dessa API.
+O <strong>Desafio CRUD</strong> é uma API de gerenciamento de funcionários, que permite a criação, leitura, atualização e exclusão. Foi utilizada princípios da programação orientada a objetos para a construção dessa API.
 
 ## O que foi desenvolvido?
 
