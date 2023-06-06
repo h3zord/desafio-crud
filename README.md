@@ -7,7 +7,7 @@ O <strong>Desafio CRUD</strong> é uma API de gerenciamento de funcionários, qu
 
 ## O que foi desenvolvido?
 
-O <strong>desafio CRUD</strong> é uma API que tem o objetivo de gerenciar o cadastro de funcionários no banco de dados. O docker foi utilizado para criar dois containers: um para o node, com a função de rodar o javascript do lado do servidor, e outro container para o banco de dados não relacional, que nesse caso é o mongoDB.
+O <strong>desafio CRUD</strong> é uma API que tem o objetivo de gerenciar o cadastro de funcionários no banco de dados. O docker foi utilizado para criar dois containers: um para o node.js, com a função de rodar o javascript do lado do servidor, e outro container para o banco de dados não relacional, que nesse caso é o mongoDB.
 
 O typescript foi a linguagem escolhida para desenvolver essa aplicação, pelo motivo de possuir uma tipagem estática, garantindo mais confiabilidade no código. O express.js ficou com a responsabilidade de gerenciar as rotas, processar as requisições HTTP e definir os middlewares. A organização do projeto segue o modelo MSC (model, service e controller), seguindo príncipios da programação orientada a objetos.
 
